@@ -12,12 +12,12 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "ngrome",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ngrome-website-ssr",
+            "outputPath": "dist/ngrome-website-ssr/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -121,8 +121,59 @@
               "devServerTarget": "ngrome-website-ssr:serve:production"
             }
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/ngrome-website-ssr/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "ngrome-website-ssr:build",
+            "serverTarget": "ngrome-website-ssr:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ngrome-website-ssr:build:production",
+              "serverTarget": "ngrome-website-ssr:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "ngrome-website-ssr:build:production",
+            "serverTarget": "ngrome-website-ssr:server:production",
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {}
+          }
         }
       }
-    }},
-  "defaultProject": "ngrome-website-ssr"
+    }
+  },
+  "defaultProject": "ngrome-website-ssr",
+  "cli": {
+    "analytics": "98d4f9b8-5867-4cc6-acde-92b872ee527f"
+  }
 }
