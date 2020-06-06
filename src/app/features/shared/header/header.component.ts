@@ -1,5 +1,6 @@
-import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild, ElementRef, Inject } from '@angular/core';
 import { SideBarService } from 'src/app/services/sidebar.service';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'ngrome-header',
@@ -9,6 +10,7 @@ import { SideBarService } from 'src/app/services/sidebar.service';
 export class HeaderComponent implements OnInit {
 
   constructor(
+    @Inject(DOCUMENT) private document: Document,
     public sidebarService: SideBarService,
     private renderer: Renderer2
   ) { }
@@ -28,13 +30,13 @@ export class HeaderComponent implements OnInit {
   }
 
   private openSidebar() {
-    this.renderer.addClass(document.body, 'site-menu--show');
+    this.renderer.addClass(this.document.body, 'site-menu--show');
     this.renderer.addClass(this.sitemenu.nativeElement, 'site-menu--show');
   }
 
 
   private closeSidebar() {
-    this.renderer.removeClass(document.body, 'site-menu--show');
+    this.renderer.removeClass(this.document.body, 'site-menu--show');
     this.renderer.removeClass(this.sitemenu.nativeElement, 'site-menu--show');
   }
 
