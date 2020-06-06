@@ -4,12 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build && npm run build:ssr",
+    "build": "ng build --prod && npm run build:ssr",
+    "copy:hosting": "rm ./dist/browser/index.html",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "dev:ssr": "ng run ngrome-website-ssr:serve-ssr",
-    "build:ssr": "ng run ngrome-website-ssr:server && npm run webpack:ssr",
+    "build:ssr": "ng run ngrome-website-ssr:server:production && npm run webpack:ssr",
     "serve:ssr": "node dist/server/main.js",
     "webpack:ssr": "webpack --config webpack.server.config.js",
     "prerender": "ng run ngrome-website-ssr:prerender"
