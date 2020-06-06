@@ -1,0 +1,144 @@
+// ------------------------------
+// 🔥 Angular Rome Modal (<- Bravo l'ingegnere)
+// ------------------------------
+
+ngrome-modal {
+
+  display: none;
+  width: 0;
+  height: 0;
+
+  .close {
+
+    // float: right;
+
+    // A morte i float (vale anche per gli !important)
+    // Ogni qualvolta che uno sviluppatore li trova in un foglio di stile, MUORE.
+
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    @include breakpoint-m {
+
+      top: 30px;
+      right: 30px;
+
+    }
+    @include breakpoint-l {
+
+      top: 40px;
+      right: 40px;
+
+    }
+    z-index: 1;
+    // Molto meglio così :)
+
+  }
+
+}
+
+.modal {
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  overflow: auto;
+
+  .modal-body {
+
+    position: relative;
+    background: $white;
+    margin: 0 auto;
+    padding: 20px 0;
+
+    @include breakpoint-m {
+
+      margin: 20px;
+      max-width: 750px;
+      padding: 35px 25px;
+
+    }
+
+    @include breakpoint-l {
+
+      margin: 60px auto;
+      max-width: 1280px;
+      padding: 75px 45px;
+
+    }
+
+    .site-content__section__title {
+
+      @include breakpoint-m {
+
+        margin-left: -20px;
+
+      }
+
+    }
+
+    h2 {
+
+      font-family: $font-primary;
+      font-weight: 700;
+      font-size: 28px;
+      margin-bottom: 12px;
+      line-height: 1;
+
+      @include breakpoint-m {
+
+        font-size: 38px;
+
+      }
+
+      @include breakpoint-l {
+
+        font-size: 48px;
+
+      }
+
+    }
+
+    h3 {
+
+      font-family: $font-primary;
+      font-weight: 700;
+      font-size: 22px;
+      margin-bottom: 12px;
+      line-height: 1;
+
+      @include breakpoint-m {
+
+        font-size: 32px;
+
+      }
+
+    }
+
+    p {
+
+      font-size: 17px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+
+    }
+
+  }
+
+}
+
+.modal-background {
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  opacity: 0.75;
+  z-index: 900;
+
+}

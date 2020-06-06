@@ -1,0 +1,103 @@
+// ------------------------------
+// 🔥 Angular Rome Sponsors
+// ------------------------------
+
+.sponsors__list {
+
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  @include breakpoint-l {
+    margin-top: 45px;
+  }
+
+  li {
+
+    display: flex;
+    align-items: center;
+    flex: 0 1 50%;
+
+    @include breakpoint-m {
+      flex: 0 1 25%;
+    }
+
+  }
+
+  a {
+
+    text-align: center;
+    display: block;
+    width: 100%;
+    padding-bottom: 40px;
+    @include breakpoint-m {
+      padding-bottom: 60px;
+    }
+
+    img {
+
+      max-height: 120px;
+      max-width: 170px;
+
+      @include breakpoint-s {
+        max-height: 70px;
+        max-width: 70px;
+      }
+
+    }
+
+  }
+
+  .main {
+
+    a {
+      img {
+        max-height: 220px;
+        max-width: 270px;
+
+        @include breakpoint-s {
+          width: 100%;
+        }
+      }
+    }
+
+  }
+
+  &--full {
+    justify-content: space-between;
+    li {
+
+      flex: 0 1 100%;
+
+      @include breakpoint-m {
+        flex: 0 1 33%;
+      }
+
+
+
+      a {
+
+        &.button{
+          padding-bottom: 10px;
+        }
+
+        img {
+
+          @include breakpoint-s {
+            width: 100%;
+            max-height: none;
+            max-width: none;
+          }
+          @include breakpoint-m {
+            max-height: 190px;
+            max-width: 250px;
+          }
+
+        }
+      }
+    }
+
+  }
+
+}
