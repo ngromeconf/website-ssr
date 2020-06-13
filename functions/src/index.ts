@@ -7,6 +7,8 @@ import * as functions from 'firebase-functions';
 //  response.send("Hello from Firebase!");
 // });
 
-export const universal = functions.https.onRequest((request, response) => {
-  require(`${process.cwd()}/dist/webpack/server`).app(request, response);
-});
+export const universal = functions
+  .runWith({ memory: '2GB', timeoutSeconds: 120 })
+  .https.onRequest((request, response) => {
+    require(`${process.cwd()}/dist/webpack/server`).app(request, response);
+  });

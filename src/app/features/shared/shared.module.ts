@@ -4,11 +4,12 @@ import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { MenuComponent } from './header/menu/menu.component';
 
 
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent],
+  declarations: [HeaderComponent, FooterComponent, MenuComponent],
   imports: [
     CommonModule,
     RouterModule

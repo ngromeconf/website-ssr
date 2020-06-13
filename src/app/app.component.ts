@@ -1,21 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { trigger, transition, state, useAnimation, style, animate } from '@angular/animations';
 import { Router, Event, NavigationStart, NavigationEnd } from '@angular/router';
 
 import { SideBarService } from './services/sidebar.service';
-
-
 
 @Component({
   selector: 'app-root',
   template: `
     <ngrome-header></ngrome-header>
     <!-- ngrome-logo (animationToggled)='showContainer()'></ngrome-logo -->
-    <main
-      class="site-content"
-      role="main"
-      [@animateContainer]="containerStatus"
-      >
+    <main class="site-content" role="main" [@animateContainer]="containerStatus">
       <router-outlet></router-outlet>
     </main>
     <ngrome-footer></ngrome-footer>
@@ -25,19 +19,18 @@ import { SideBarService } from './services/sidebar.service';
     trigger('animateContainer', [
       state('visible', style({ opacity: 1 })),
       state('hidden', style({ opacity: 0 })),
-      transition('visible => hidden', animate(2000, style({opacity: 0}))),
-      transition('hidden => visible', animate(2000, style({opacity: 1}))),
+      transition('visible => hidden', animate(2000, style({ opacity: 0 }))),
+      transition('hidden => visible', animate(2000, style({ opacity: 1 }))),
     ]),
-  ]
+  ],
 })
 export class AppComponent {
-
   containerStatus = 'hidden';
 
   constructor(
-    private sidebarService: SideBarService,
-    private router: Router) {
-
+    @Inject(SideBarService) private sidebarService: SideBarService,
+    @Inject(Router) private router: Router
+  ) {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
         // Show loading indicator
@@ -45,7 +38,6 @@ export class AppComponent {
         window.scroll(0, 0);
       }
       if (event instanceof NavigationEnd) {
-
         this.showContainer();
 
         // Close the sidebar if is open after the navigation is complete
@@ -54,7 +46,6 @@ export class AppComponent {
         }
       }
     });
-
   }
 
   showContainer() {
@@ -72,6 +63,4 @@ export class AppComponent {
   openCloseSidebar() {
     this.sidebarService.toggleSidebarStatus();
   }
-
-
 }

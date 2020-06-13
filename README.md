@@ -1,5 +1,7 @@
 # Ngrome Website with SSR (Angular Universal + Firebase)
 
+This is not the official NGROME website repository. This project was created for only experimental purpose.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
 
 ## Development server
@@ -8,7 +10,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Test the UNIVERSAL SSR
 
-Run `npm run build && serve:ssr` this command start the SSR with Angular Universal in your  `http://localhost:4000/`. 
+Run `npm run build && npm run serve:ssr` this command start the SSR with Angular Universal in your `http://localhost:4000/`.
 
 ## Test the Firebase SSR
 
@@ -17,11 +19,9 @@ Run `npm run build` this command copy the dist folder and build the server that 
 
 Run `firebase serve` to start the local demo server "emulator" inside the firebase function.
 
-
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
 
 ## Running unit tests
 
