@@ -1,5 +1,11 @@
 {
-  "projects": {
-    "default": "mypwa-697ec"
+  "targets": {
+    "mypwa-697ec": {
+      "hosting": {
+        "ngrome-website-ssr": [
+          "mypwa-697ec"
+        ]
+      }
+    }
   }
 }
